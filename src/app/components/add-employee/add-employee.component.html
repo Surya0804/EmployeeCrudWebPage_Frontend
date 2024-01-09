@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 56px; /* Adjust according to your navbar height */
+      margin-bottom: 60px; /* Adjust according to your footer height */
+    }
+
+    .navbar {
+      background-color: black;
+    }
+
+    .footer {
+      background-color: black; /* Change the color as needed */
+      padding: 8px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+      border: 1px solid #ddd; /* Border around the form */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-row {
+      margin-bottom: 15px;
+    }
+
+    .form-label {
+      font-weight: bold;
+      font-size: 12px; /* Decreased font size */
+    }
+
+    .form-control {
+      font-size: 12px; /* Decreased font size */
+    }
+
+    .btn-primary {
+      font-size: 12px; /* Decreased font size */
+    }
+    .nav-link{
+        font-weight: bolder;
+    }
+    .navbar-brand{
+        font-weight: bolder;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <a class="navbar-brand" href="#">WELCOME TO EMPLOYEE PORTAL</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">ADD EMPLOYEE</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">EMPLOYEE LIST</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ABOUT</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container mt-5" style="margin-bottom: 80px; padding-bottom: 30px;">
+    <div class="form-container">
+      <h2 class="text-center mb-4">ADD EMPLOYEE</h2>
+      <form>
+        <div class="form-row">
+          <label for="firstname" class="form-label">First Name</label>
+          <input type="text" required class="form-control" [(ngModel)]="employee.firstname" id="firstname" name="firstname" placeholder="First Name">
+        </div>
+
+        <div class="form-row">
+          <label for="middlename" class="form-label">Middle Name</label>
+          <input type="text" class="form-control" [(ngModel)]="employee.middlename" id="middlename" name="middlename" placeholder="Middle Name">
+        </div>
+
+        <div class="form-row">
+          <label for="lastname" class="form-label">Last Name</label>
+          <input type="text" required class="form-control" [(ngModel)]="employee.lastname" id="lastname" name="lastname" placeholder="Last Name">
+        </div>
+
+        <div class="form-row">
+          <label for="age" class="form-label">Age</label>
+          <input type="number" required class="form-control" [(ngModel)]="employee.age" id="age" name="age" placeholder="Age">
+        </div>
+
+        <div class="form-row">
+          <label for="aadhar" class="form-label">Aadhar</label>
+          <input type="number" required class="form-control" id="aadhar" [(ngModel)]="employee.aadhar" name="aadhar" placeholder="Aadhar">
+        </div>
+
+        <div class="form-row">
+          <label for="state" class="form-label">State</label>
+          <select class="form-control" id="state" name="state" [(ngModel)]="employee.state"  (change)="onStateChange($event)">
+            <option disabled selected value="undefined">Select State</option>
+            <option *ngFor="let s of state"  [value]="s.id">{{s.name}}</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="city" class="form-label">City</label>
+          <select class="form-control"  id="city" name="city" [(ngModel)]="employee.city">
+            <option disabled selected value="undefined">Select City</option>
+            <option *ngFor="let ci of city" >{{ci.city}}</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+
+        <button type="button" (click)="submitEmployee()" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer text-center">
+    <p style="color: white; font-size: small; padding-top: 15px;">&copy; 2023 Your Company. All rights reserved.</p>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
